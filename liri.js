@@ -12,6 +12,19 @@ var userInput = process.argv;
 var movieName = "";
 var song = "";
 
+//Do-What-It-Says protocol based on random.txt file
+var doWhatItSays = function () {
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        console.log(data);
+        var dataArr = data.split(",");
+        if (dataArr.length === 2) {
+            pick(dataArr[0], dataArr[1]);
+        } else if (dataArr.length === 1) {
+            pick(dataArr[0]);
+        }
+    });
+};
+
 //Spotify - syntax elements from NPM API example
 var spotifySearch = function (song) {
     for (var i = 3; i < userInput.length; i++) {
@@ -38,8 +51,7 @@ var spotifySearch = function (song) {
                 console.log("Album: " + songs[i].album.name);
                 console.log("-------------------------------------------------------------------");
             }
-        }
-    );
+        });
 };
 //Twitter - syntax elements from NPM API example
 var twitterSearch = function () {
@@ -92,18 +104,7 @@ var movieSearch = function (movieName) {
         }
     });
 };
-//Do-What-It-Says protocol based on random.txt file
-var doWhatItSays = function () {
-    fs.readFile("random.txt", "utf8", function (error, data) {
-        console.log(data);
-        var dataArr = data.split(",");
-        if (dataArr.length === 2) {
-            pick(dataArr[0], dataArr[1]);
-        } else if (dataArr.length === 1) {
-            pick(dataArr[0]);
-        }
-    });
-};
+
 //Cases to choose from
 var pick = function (liriGo, userInput) {
     switch (liriGo) {
