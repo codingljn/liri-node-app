@@ -22,7 +22,7 @@ var doWhatItSays = function () {
         var dataArr = data.split(",");
         if (dataArr.length === 2) {
             pick(dataArr[0], dataArr[1]);
-        } 
+        }
     });
 };
 
@@ -45,7 +45,7 @@ var spotifySearch = function (song) {
             }
             var songs = data.tracks.items;
             for (var i = 0; i < songs.length; i++) {
-                console.log(i+1);//Show number of results
+                console.log(i + 1);//Show number of results
                 console.log("Artist(s): " + songs[i].artists[0].name);
                 console.log("Song name: " + songs[i].name);
                 console.log("Preview link: " + songs[i].preview_url);
